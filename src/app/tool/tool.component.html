@@ -1,0 +1,29 @@
+<h2>1. Wybierz ustawienia</h2>
+<mat-radio-group aria-label="Select an option" (change)="rotationSettingsChanged($event)" value={{rotation}}>
+    <mat-radio-button value="90">90&deg; w prawo</mat-radio-button>
+    <mat-radio-button value="-90">90&deg; w lewo</mat-radio-button>
+    <mat-radio-button value="180">180&deg;</mat-radio-button>
+</mat-radio-group>
+
+<h2>2. Wybierz pliki</h2>
+<p>Maksymalny rozmiar to <span style="font-weight: bold;">30 MB</span></p>
+<p *ngIf="file_too_big" style="color: red">Co najmniej jeden plik został pominięty ze względu na rozmiar</p>
+<div appDnd class="dropZone" (fileDropped)="fileBrowseHandler($event)">
+    <span class="material-icons-outlined cloud_upload">
+        cloud_upload
+    </span>
+
+    <p>Przeciągnij i upuść
+    </p>
+</div>
+<div class="uploadButton">
+    <p>lub</p>
+    <input type="file" accept=".pdf" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+    <button class="button" for="fileDropRef" mat-flat-button color="primary">Wybierz z dysku</button>
+</div>
+<h2>3. Pobierz zmodyfikowane pliki</h2>
+<p class="noFilesWarning" *ngIf="files.length == 0">Brak dodanych plików</p>
+<app-file-box *ngFor="let file of files" [file]="file"></app-file-box>
+<cookie-law position="bottom">
+  Ta strona używa ciasteczek. Korzystanie z niej oznacza zgodę na przechowywanie ciasteczek.
+</cookie-law>

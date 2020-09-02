@@ -1,0 +1,15 @@
+<div class="file-box">
+    <span class="material-icons-outlined ms-dark">insert_drive_file</span>
+    <div class="file-info">
+        <p>{{file.file.name | limitTo: "20"}}</p>
+        <p>{{file.file.size | filesize}}</p>
+    </div>
+    <mat-progress-bar value={{file_upload_progress}}></mat-progress-bar>
+    <button *ngIf="!invalid_file" mat-flat-button color="primary" (click)="downloadFile()"
+        [disabled]="file_upload_progress != 100">Pobierz</button>
+    <div *ngIf="invalid_file" class="operation_error">
+        <span class="material-icons">
+            error_outline
+        </span>
+    </div>
+</div>

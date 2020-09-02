@@ -1,0 +1,51 @@
+@import "../../palette.scss";
+.file-box {
+    height: 100px;
+    width: 400px;
+    border: dashed 1px #979797;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 30px;
+
+    .material-icons-outlined {
+        font-size: 4rem;
+    }
+    .file-info {
+        display: flex;
+        flex-direction: column;
+        p:first-child {
+            color: $primary-text-color;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        p {
+            padding: 0;
+            margin: 0;
+            font-size: 0.8rem;
+            color: $secondary-text-color;
+        }
+    }
+    mat-progress-bar {
+        position: absolute;
+        bottom: 0;
+        height: 8px;
+    }
+
+    button {
+        color: $primary-text-color;
+        background-color: $accent-color;
+        position: absolute;
+        right: 30px;
+    }
+
+    .operation_error {
+        position: absolute;
+        right: 20px;
+        span {
+            font-size: 4rem;
+            color: rgb(255, 0, 0);
+        }
+    }
+}

@@ -1,0 +1,98 @@
+@import "../../palette.scss";
+
+.dropZone {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  border: dashed 1px #979797;
+  .cloud_upload {
+    font-size: 5rem;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #38424c;
+  }
+}
+
+.fileover {
+  animation: shadow-drop-2-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.uploadButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  input {
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  label {
+    color: $primary-text-color;
+    width: 183px;
+    height: 44px;
+    border-radius: 21.5px;
+    padding: 8px 16px;
+    margin: 0 auto;
+  }
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+  mat-radio-button:not(:last-child) {
+    margin-bottom: 13px;
+  }
+  .mat-radio-outer-circle {
+    color: $accent-color;
+  }
+}
+
+.button {
+  background-color: $accent-color;
+  color: $primary-text-color;
+  cursor: pointer;
+}
+
+.noFilesWarning{
+  text-align: center;
+  color: $secondary-text-color;
+}
+
+@-webkit-keyframes shadow-drop-2-center {
+  0% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(50px);
+    transform: translateZ(50px);
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}
+@keyframes shadow-drop-2-center {
+  0% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(50px);
+    transform: translateZ(50px);
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}

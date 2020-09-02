@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/frontPdfRotate",
+            "outputPath": "dist/frontPdfRotate/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -92,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -121,8 +123,59 @@
               "devServerTarget": "frontPdfRotate:serve:production"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/frontPdfRotate/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "frontPdfRotate:build",
+            "serverTarget": "frontPdfRotate:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontPdfRotate:build:production",
+              "serverTarget": "frontPdfRotate:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "frontPdfRotate:build:production",
+            "serverTarget": "frontPdfRotate:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
         }
       }
-    }},
-  "defaultProject": "frontPdfRotate"
+    }
+  },
+  "defaultProject": "frontPdfRotate",
+  "cli": {
+    "analytics": false
+  }
 }

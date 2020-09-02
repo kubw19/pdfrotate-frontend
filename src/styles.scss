@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./palette.scss";
+
+html,
+body {
+  height: 100%;
+}
+
+body > app-root {
+  background-color: $primary-color-text;
+  margin          : 0;
+  font-family     : Roboto, "Helvetica Neue", sans-serif;
+
+  width         : 100vw;
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+}
+
+//progress bar color
+mat-progress-bar .mat-progress-bar-buffer {
+  background: $divider-color;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: $primary-color-dark;
+}
